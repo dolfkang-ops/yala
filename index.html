@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>얄라글램핑 × 땡큐캠핑 | 글램핑 도입 파트너십</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        thankq: {
+                            light: '#E8F5E9',
+                            DEFAULT: '#2E7D32', // ThankQ Camping Green
+                            dark: '#1B5E20',
+                        },
+                        yala: {
+                            light: '#EFF6FF',
+                            DEFAULT: '#1E3A8A', // Yala Navy
+                            dark: '#172554',
+                            blue: '#3B82F6'
+                        },
+                        accent: {
+                            DEFAULT: '#EA580C', // Orange for Highlight/CTA
+                            dark: '#C2410C',
+                            light: '#FFF7ED'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Alpine.js for Interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+        body {
+            font-family: 'Pretendard', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2E7D32;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1B5E20;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased" x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 100)">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 transition-all duration-300 border-b"
+            :class="scrolled ? 'bg-white/95 backdrop-blur shadow-md py-3 border-gray-100' : 'bg-transparent py-5 border-transparent'">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <!-- Logo area -->
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-xl md:text-2xl font-black tracking-tight" :class="scrolled ? 'text-gray-900' : 'text-white'">
+                    <span class="text-yala">얄라글램핑</span>
+                    <span class="text-gray-400 font-light mx-1">×</span>
+                    <span class="text-thankq">땡큐캠핑</span>
+                </span>
+            </a>
+
+            <!-- PC Navigation & CTA -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#why-section" class="text-sm font-medium hover:text-thankq transition" :class="scrolled ? 'text-gray-600' : 'text-gray-200'">파트너십 혜택</a>
+                <a href="#structure-section" class="text-sm font-medium hover:text-thankq transition" :class="scrolled ? 'text-gray-600' : 'text-gray-200'">협업 구조</a>
+                <a href="#model-section" class="text-sm font-medium hover:text-thankq transition" :class="scrolled ? 'text-gray-600' : 'text-gray-200'">도입 모델</a>
+                <a href="#step-section" class="text-sm font-medium hover:text-thankq transition" :class="scrolled ? 'text-gray-600' : 'text-gray-200'">도입 과정</a>
+                <a href="#simulator-section" class="text-sm font-medium hover:text-thankq transition" :class="scrolled ? 'text-gray-600' : 'text-gray-200'">수익 확인</a>
+                
+                <a href="#contact-section" class="bg-accent hover:bg-accent-dark text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md transition transform hover:-translate-y-0.5">
+                    도입 상담 신청
+                </a>
+            </div>
+            
+            <!-- Mobile CTA (Only visible on scroll or small screens) -->
+            <div class="md:hidden">
+                <a href="#contact-section" class="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-full font-bold text-xs shadow-md transition">
+                    상담 신청
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (Natural Premium Vibe) -->
+    <section class="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center items-center text-center -mt-20 pt-20 bg-cover bg-center overflow-hidden" 
+             style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1533873984035-25970ab07461?auto=format&fit=crop&w=1920&q=80');">
+        
+        <!-- Ambient forest overlay effect -->
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-90"></div>
+
+        <div class="container mx-auto px-4 z-10 py-12 flex flex-col items-center justify-between h-full max-w-5xl">
+            <div class="my-auto space-y-6 md:space-y-8">
+                <!-- Tagline Badge -->
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold tracking-wider uppercase mb-2">
+                    <span class="text-amber-400"><i class="fa-solid fa-handshake"></i> 공동 기획</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-white/50"></span>
+                    <span>얄라글램핑 × 땡큐캠핑</span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-black text-white leading-tight drop-shadow-md">
+                    초기 구축비 <span class="text-amber-400 underline decoration-wavy decoration-1 underline-offset-8">30%</span>로<br class="hidden sm:inline">
+                    글램핑 운영을 시작하세요
+                </h1>
+
+                <!-- Sub-messages -->
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-200 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow">
+                    “초기 부담은 낮추고, 운영수익은 확보하고,<br class="sm:hidden">
+                    최종적으로 <span class="text-white font-bold border-b-2 border-amber-400">내 글램핑 시설</span>이 됩니다.”
+                </p>
+
+                <!-- Core Details in Prose -->
+                <div class="max-w-3xl mx-auto space-y-3 text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                    <p>
+                        얄라글램핑 코리아가 구축비의 <span class="text-white font-semibold">약 70%를 선투자</span>하여 캠핑장의 초기 투자 부담을 대폭 해소해 드립니다.
+                    </p>
+                    <p>
+                        120만 캠핑 회원을 보유한 <span class="text-white font-semibold">땡큐캠핑</span>이 예약·홍보·정산을 자동 지원하여 공실 걱정 없는 안정적인 운영을 돕습니다.
+                    </p>
+                </div>
+
+                <!-- Three Core Pillars (Mandatory above the fold on mobile) -->
+                <div class="grid grid-cols-3 gap-2 md:gap-4 max-w-2xl mx-auto pt-4 pb-2">
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 md:p-4 border border-white/10 hover:border-white/30 transition">
+                        <div class="text-amber-400 font-black text-lg md:text-2xl">30%</div>
+                        <div class="text-white text-xs md:text-sm font-semibold mt-1">초기비용 최소화</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 md:p-4 border border-white/10 hover:border-white/30 transition">
+                        <div class="text-emerald-400 font-black text-lg md:text-2xl">UP</div>
+                        <div class="text-white text-xs md:text-sm font-semibold mt-1">운영수익 확보</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 md:p-4 border border-white/10 hover:border-white/30 transition">
+                        <div class="text-sky-400 font-black text-lg md:text-2xl">100%</div>
+                        <div class="text-white text-xs md:text-sm font-semibold mt-1">최종 소유권 이전</div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#contact-section" class="w-full sm:w-auto bg-accent hover:bg-accent-dark text-white font-bold px-8 py-4 rounded-xl text-base md:text-lg shadow-xl shadow-accent/20 transition transform hover:-translate-y-1">
+                        우리 캠핑장 도입 상담하기 <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                    </a>
+                    <a href="#simulator-section" class="w-full sm:w-auto bg-white/15 hover:bg-white/25 text-white border border-white/20 font-bold px-8 py-4 rounded-xl text-base md:text-lg transition backdrop-blur-sm">
+                        예상 수익 확인하기
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="mt-8 animate-bounce text-gray-400 text-xs">
+                스크롤하여 더 알아보기<br>
+                <i class="fa-solid fa-chevron-down mt-2 text-base"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlight Sentence Strip -->
+    <div class="bg-yala text-white py-6 border-y border-yala-dark overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-around text-center md:text-left gap-4">
+            <div class="flex items-center space-x-3">
+                <span class="bg-amber-500 text-yala text-xs px-2.5 py-1 rounded font-black">POINT</span>
+                <p class="font-bold text-sm md:text-base">“전체 구축비를 한 번에 투자하지 않아도 되는 파격적 구조”</p>
+            </div>
+            <div class="h-px w-16 bg-white/20 md:hidden"></div>
+            <p class="text-gray-300 text-xs md:text-sm font-light">초기비용 30% 수준으로 럭셔리 글램핑 사이트를 빠르게 확보하세요.</p>
+        </div>
+    </div>
+
+    <!-- Section 2: Why Campsites Need This -->
+    <section id="why-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-thankq font-bold uppercase tracking-wider text-xs md:text-sm">Why Partnership?</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    캠핑장 사장님이 <span class="text-thankq">반드시 선택</span>해야 하는 이유
+                </h2>
+                <div class="w-12 h-1 bg-thankq mx-auto rounded"></div>
+            </div>
+
+            <!-- 4 Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-thankq/20 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-thankq-light rounded-xl flex items-center justify-center text-thankq text-xl font-bold mb-6">
+                            01
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">초기 투자 부담 완화</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            고액의 글램핑 구축비를 한 번에 투자할 필요가 없습니다. <span class="font-semibold text-gray-900">전체 구축비의 약 30%만 초기 부담</span>하여 신규 프리미엄 글램핑 상품을 안정적으로 오픈할 수 있습니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/50 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-coins mr-1"></i> 부담금 최소 약 70% 세이브
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-thankq/20 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-thankq-light rounded-xl flex items-center justify-center text-thankq text-xl font-bold mb-6">
+                            02
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">새로운 운영수익 확보</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            기존 일반 오토캠핑 사이트의 낮은 객단가를 보완합니다. <span class="font-semibold text-gray-900">객단가가 높은 럭셔리 글램핑 객실을 추가</span>함으로써 유휴 공간 대비 월등한 고매출을 창출합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/50 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-chart-line mr-1"></i> 평균 객단가 3~4배 상승 효과
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-thankq/20 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-thankq-light rounded-xl flex items-center justify-center text-thankq text-xl font-bold mb-6">
+                            03
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">예약·판매 부담 감소</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            홍보나 모객 고민이 없습니다. 국내 최대 캠핑 플랫폼인 <span class="font-semibold text-gray-900">땡큐캠핑이 독점 예약 판매 및 타겟 프로모션</span>을 수행하고 정산 업무까지 투명하게 대행합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/50 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-users mr-1"></i> 120만 캠핑 회원 즉시 노출
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-thankq/20 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-thankq-light rounded-xl flex items-center justify-center text-thankq text-xl font-bold mb-6">
+                            04
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">최종적으로 시설 소유</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            매월 소모되는 단순 임대가 아닙니다. 운영을 통해 <span class="font-semibold text-gray-900">약정된 누적 기준 금액에 도달하면 소유권이 완전히 캠핑장으로 이전</span>되어 자산이 됩니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/50 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-key mr-1"></i> 기간 충족 시 100% 자산화
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Three-Way Collaboration Structure -->
+    <section id="structure-section" class="py-20 bg-gray-100 border-y border-gray-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-yala font-bold uppercase tracking-wider text-xs md:text-sm">Collaboration Structure</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    캠핑장이 주도하는 <span class="text-yala">3자 협업 비즈니스 구조</span>
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base">각 분야의 전문가들이 결합하여 리스크는 나누고 수익은 극대화합니다.</p>
+            </div>
+
+            <!-- Visual Schema Diagram -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-12">
+                
+                <!-- Yala Glamping (Left) -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-10 h-10 rounded-full bg-yala-light flex items-center justify-center text-yala font-bold">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-gray-900 text-lg">얄라글램핑 코리아</h4>
+                                <span class="text-xs text-yala font-bold">시설 투자 및 공급</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-600">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-yala mt-1 mr-2 text-xs"></i> <span>글램핑 시설 공급 및 설치</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-yala mt-1 mr-2 text-xs"></i> <span><strong>구축비의 약 70% 선투자</strong></span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-yala mt-1 mr-2 text-xs"></i> <span>글램핑 품질 및 시설 구축</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-yala mt-1 mr-2 text-xs"></i> <span>투자금 회수를 위한 수익쉐어</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-yala mt-1 mr-2 text-xs"></i> <span>기준금액 달성 전 시설 소유권 보유</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <span>역할: 선투자 & 시설공급</span>
+                        <span class="text-yala"><i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- CAMPSITE (Center Highlighted) -->
+                <div class="bg-gradient-to-br from-thankq-light to-white rounded-2xl p-6 border-2 border-thankq shadow-lg flex flex-col justify-between transform lg:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-thankq text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
+                        핵심 주체
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-10 h-10 rounded-full bg-thankq text-white flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-tents"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-gray-900 text-lg">캠핑장 (사장님)</h4>
+                                <span class="text-xs text-thankq font-bold">운영 및 수익 창출</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-700 font-medium">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-thankq mt-1 mr-2 text-xs"></i> <span><strong>구축비 약 30% 초기 부담</strong></span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-thankq mt-1 mr-2 text-xs"></i> <span>글램핑 현장 운영</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-thankq mt-1 mr-2 text-xs"></i> <span>고객 응대 및 시설 관리</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-thankq mt-1 mr-2 text-xs"></i> <span><strong>글램핑 운영수익 확보</strong></span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-thankq mt-1 mr-2 text-xs"></i> <span class="text-thankq-dark"><strong>약정조건 충족 후 시설 소유</strong></span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-emerald-200/50 flex items-center justify-between text-xs text-thankq">
+                        <span>역할: 현장운영 & 수익 창출</span>
+                        <span><i class="fa-solid fa-arrows-left-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- ThankQ Camping (Right) -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-thankq font-bold">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-gray-900 text-lg">땡큐캠핑</h4>
+                                <span class="text-xs text-thankq font-bold">예약·판매·정산 플랫폼</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-600">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>글램핑 예약 판매</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>고객 결제 수납</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>마케팅 및 프로모션 지원</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>매출 집계 및 수익쉐어 자동 정산</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>캠핑장 및 얄라 정산정보 제공</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <span>역할: 플랫폼 판매 & 정산</span>
+                        <span class="text-thankq"><i class="fa-solid fa-arrow-left"></i></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pipeline Flowchart (Step pipeline) -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <div class="text-center mb-6">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">BUSINESS FLOW</span>
+                    <h5 class="font-extrabold text-gray-800 text-base mt-1">글램핑 파트너십 사업 흐름도</h5>
+                </div>
+                <!-- Flex flow layout -->
+                <div class="grid grid-cols-2 md:grid-cols-7 gap-3 text-center">
+                    
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col justify-center items-center">
+                        <span class="text-xs text-yala font-bold mb-1">01. 시설투자</span>
+                        <span class="text-xs text-gray-500 font-light">구축비 70% 선투자</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col justify-center items-center">
+                        <span class="text-xs text-yala font-bold mb-1">02. 글램핑 설치</span>
+                        <span class="text-xs text-gray-500 font-light">캠핑장 30% 초기부담</span>
+                    </div>
+
+                    <div class="hidden md:flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col justify-center items-center col-span-2 md:col-span-1">
+                        <span class="text-xs text-thankq font-bold mb-1">03. 예약판매</span>
+                        <span class="text-xs text-gray-500 font-light">땡큐캠핑 모바일 노출</span>
+                    </div>
+
+                    <div class="hidden md:flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col justify-center items-center">
+                        <span class="text-xs text-thankq font-bold mb-1">04. 매출발생</span>
+                        <span class="text-xs text-gray-500 font-light">고객 실시간 카드결제</span>
+                    </div>
+
+                    <div class="hidden md:flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col justify-center items-center">
+                        <span class="text-xs text-amber-600 font-bold mb-1">05. 수익쉐어</span>
+                        <span class="text-xs text-gray-500 font-light">투명한 자동 정산 분배</span>
+                    </div>
+
+                    <div class="hidden md:flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col justify-center items-center">
+                        <span class="text-xs text-amber-600 font-bold mb-1">06. 투자회수</span>
+                        <span class="text-xs text-gray-500 font-light">약정 누적금액 정산</span>
+                    </div>
+
+                    <div class="hidden md:flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <div class="bg-emerald-500 text-white p-3 rounded-xl border border-emerald-600 flex flex-col justify-center items-center col-span-2 md:col-span-1 shadow-sm">
+                        <span class="text-xs font-bold mb-1"><i class="fa-solid fa-gift mr-1"></i> 07. 소유권 이전</span>
+                        <span class="text-xs text-emerald-100 font-light">캠핑장 완전 자산화</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3-2: Yala Glamping Premium Lineup -->
+    <section id="model-section" class="py-20 bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-yala font-bold uppercase tracking-wider text-xs md:text-sm">Premium Lineup</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    얄라글램핑 <span class="text-yala">프리미엄 대표 모델</span> 제안
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base">캠핑장의 입지 조건과 핵심 타겟에 최적화된 네덜란드 명품 롯지를 소개합니다.</p>
+            </div>
+
+            <!-- Model Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Model 1: SPARKLE -->
+                <div class="bg-gray-50 rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+                            <div class="absolute top-4 left-4 bg-yala text-white text-xs font-bold px-3 py-1 rounded-full">
+                                커플 & 하이커 특화
+                            </div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <h3 class="text-2xl font-black tracking-tight">SPARKLE</h3>
+                                <p class="text-xs text-gray-300 font-light">스타일리시하고 아늑한 소형 롯지</p>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6 space-y-4">
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                낭만적인 휴식을 원하는 커플 고객이나 가벼운 짐으로 자연을 만끽하는 하이커/사이클리스트에게 완벽한 아늑함을 선사하는 미니멀 럭셔리 모델입니다.
+                            </p>
+                            
+                            <div class="border-t border-gray-200/60 pt-4 space-y-2">
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>제공 면적(라인업)</span>
+                                    <span class="font-bold text-gray-800">Sparkle 7.5 / 12</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>권장 1박 판매가</span>
+                                    <span class="font-bold text-thankq">10만 ~ 15만원</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>설치 적합 환경</span>
+                                    <span class="font-bold text-gray-800 text-right">자투리 공간, 커플 프라이빗 존</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-yala-light p-3.5 rounded-2xl border border-yala/10 text-xs text-yala-dark leading-relaxed">
+                                <span class="font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> 파트너십 제안</span><br>
+                                겨울철 별도 보관/이동이 불필요하고 관리가 매우 편리하여 기존 텐트 사이트 구석의 유휴지를 고수익 사이트로 전환하기 가장 좋습니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0" x-data="{}">
+                        <button type="button" @click="$dispatch('select-model', 'SPARKLE')" class="w-full bg-white hover:bg-yala hover:text-white text-yala border border-yala/30 font-bold py-3 rounded-xl text-center text-sm shadow-sm transition">
+                            이 모델로 예상수익 계산하기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Model 2: COMET -->
+                <div class="bg-gray-50 rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between relative">
+                    <div class="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-black tracking-widest px-3 py-1 rounded-bl-xl uppercase shadow z-10 animate-pulse">
+                        BESTSELLER
+                    </div>
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=800&q=80');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+                            <div class="absolute top-4 left-4 bg-yala text-white text-xs font-bold px-3 py-1 rounded-full">
+                                콤팩트 & 실용성 극대화
+                            </div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <h3 class="text-2xl font-black tracking-tight">COMET</h3>
+                                <p class="text-xs text-gray-300 font-light">작은 공간에 최적화된 견고한 모델</p>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6 space-y-4">
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                협소하거나 구조가 까다로운 사이트 레이아웃에도 쏙 들어가는 베스트셀러 모델입니다. 콤팩트한 외형에 침실, 거실, 주방, 베란다까지 완벽하게 품었습니다.
+                            </p>
+                            
+                            <div class="border-t border-gray-200/60 pt-4 space-y-2">
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>제공 면적(라인업)</span>
+                                    <span class="font-bold text-gray-800">Comet 16 / 20 / 27 / 30</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>권장 1박 판매가</span>
+                                    <span class="font-bold text-thankq">15만 ~ 22만원</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>설치 적합 환경</span>
+                                    <span class="font-bold text-gray-800 text-right">협소 사이트, 표준 글램핑 구역</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-yala-light p-3.5 rounded-2xl border border-yala/10 text-xs text-yala-dark leading-relaxed">
+                                <span class="font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> 파트너십 제안</span><br>
+                                공간 효율이 아주 뛰어나 다수 동을 밀집 배치하기 좋습니다. 화장실과 샤워실을 내장한 풀옵션 럭셔리 라인업으로 단체 및 소가족 예약률을 독점할 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0" x-data="{}">
+                        <button type="button" @click="$dispatch('select-model', 'COMET')" class="w-full bg-yala text-white hover:bg-yala-dark font-bold py-3 rounded-xl text-center text-sm shadow transition">
+                            이 모델로 예상수익 계산하기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Model 3: SUNSHINE -->
+                <div class="bg-gray-50 rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+                            <div class="absolute top-4 left-4 bg-yala text-white text-xs font-bold px-3 py-1 rounded-full">
+                                최고급 럭셔리 패밀리
+                            </div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <h3 class="text-2xl font-black tracking-tight">SUNSHINE</h3>
+                                <p class="text-xs text-gray-300 font-light">웅장한 아프리카 사파리 스타일</p>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6 space-y-4">
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                압도적인 웅장함과 럭셔리한 실내 구성을 자랑하는 패밀리 타겟 대형 플래그십 모델입니다. 호텔급 욕실, 대형 주방, 넓은 다이닝 거실 및 베란다를 완비하였습니다.
+                            </p>
+                            
+                            <div class="border-t border-gray-200/60 pt-4 space-y-2">
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>제공 면적(라인업)</span>
+                                    <span class="font-bold text-gray-800">Sunshine 38 / 49 / 56 / 95</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>권장 1박 판매가</span>
+                                    <span class="font-bold text-thankq">25만 ~ 38만원</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>설치 적합 환경</span>
+                                    <span class="font-bold text-gray-800 text-right">경치 좋은 랜드마크 존, 대형 사이트</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-yala-light p-3.5 rounded-2xl border border-yala/10 text-xs text-yala-dark leading-relaxed">
+                                <span class="font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> 파트너십 제안</span><br>
+                                객단가가 가장 높은 프리미엄 모델로서, 30% 초기 투자비용 모델과 결합할 때 회수 속도가 가장 빠릅니다. 캠핑장의 랜드마크로 포지셔닝하여 브랜딩 효과를 높이세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0" x-data="{}">
+                        <button type="button" @click="$dispatch('select-model', 'SUNSHINE')" class="w-full bg-white hover:bg-yala hover:text-white text-yala border border-yala/30 font-bold py-3 rounded-xl text-center text-sm shadow-sm transition">
+                            이 모델로 예상수익 계산하기
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Step-by-Step Onboarding Process -->
+    <section id="step-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-thankq font-bold uppercase tracking-wider text-xs md:text-sm">Onboarding Process</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    상담부터 완료까지 <span class="text-thankq">원스톱 도입 과정</span>
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base">복잡한 절차 없이 간편하고 빠르게 글램핑 하우스를 오픈하세요.</p>
+            </div>
+
+            <!-- Steps Progress Component -->
+            <div class="relative">
+                <!-- Vertical Line for mobile, Horizontal Line for desktop -->
+                <div class="absolute left-8 md:left-1/2 top-4 bottom-4 w-1 md:w-auto md:h-1 md:left-8 md:right-8 md:top-12 bg-gray-200 -translate-x-1/2 md:translate-x-0"></div>
+
+                <div class="space-y-12 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-16 relative">
+                    
+                    <!-- STEP 01 -->
+                    <div class="flex items-start md:flex-col md:items-center text-left md:text-center group">
+                        <div class="flex-shrink-0 z-10 w-16 h-16 rounded-2xl bg-white border-4 border-thankq text-thankq flex items-center justify-center font-black text-xl shadow-md transition duration-300 group-hover:scale-105">
+                            01
+                        </div>
+                        <div class="ml-6 md:ml-0 md:mt-4">
+                            <h4 class="font-bold text-lg text-gray-900 mb-1">캠핑장 도입 상담</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                                캠핑장 위치, 운영현황, 설치가능 공간 등을 확인합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 02 -->
+                    <div class="flex items-start md:flex-col md:items-center text-left md:text-center group">
+                        <div class="flex-shrink-0 z-10 w-16 h-16 rounded-2xl bg-white border-4 border-thankq text-thankq flex items-center justify-center font-black text-xl shadow-md transition duration-300 group-hover:scale-105">
+                            02
+                        </div>
+                        <div class="ml-6 md:ml-0 md:mt-4">
+                            <h4 class="font-bold text-lg text-gray-900 mb-1">사업성 및 예상수익 분석</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                                땡큐캠핑 예약 데이터를 기반으로 예상 객단가·가동률·매출 등을 검토합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 03 -->
+                    <div class="flex items-start md:flex-col md:items-center text-left md:text-center group">
+                        <div class="flex-shrink-0 z-10 w-16 h-16 rounded-2xl bg-white border-4 border-thankq text-thankq flex items-center justify-center font-black text-xl shadow-md transition duration-300 group-hover:scale-105">
+                            03
+                        </div>
+                        <div class="ml-6 md:ml-0 md:mt-4">
+                            <h4 class="font-bold text-lg text-gray-900 mb-1">설치규모 및 조건 협의</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                                설치 동수, 구축비, 초기 부담금(30%), 수익쉐어 기준 등을 확정합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 04 -->
+                    <div class="flex items-start md:flex-col md:items-center text-left md:text-center group">
+                        <div class="flex-shrink-0 z-10 w-16 h-16 rounded-2xl bg-white border-4 border-thankq text-thankq flex items-center justify-center font-black text-xl shadow-md transition duration-300 group-hover:scale-105">
+                            04
+                        </div>
+                        <div class="ml-6 md:ml-0 md:mt-4">
+                            <h4 class="font-bold text-lg text-gray-900 mb-1">3자 협약 체결</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                                얄라글램핑 × 캠핑장 × 땡큐캠핑 간 역할 및 정산조건을 확정합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 05 -->
+                    <div class="flex items-start md:flex-col md:items-center text-left md:text-center group">
+                        <div class="flex-shrink-0 z-10 w-16 h-16 rounded-2xl bg-white border-4 border-thankq text-thankq flex items-center justify-center font-black text-xl shadow-md transition duration-300 group-hover:scale-105">
+                            05
+                        </div>
+                        <div class="ml-6 md:ml-0 md:mt-4">
+                            <h4 class="font-bold text-lg text-gray-900 mb-1">글램핑 설치 및 판매 시작</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                                얄라글램핑이 시설을 설치하고 땡큐캠핑 판매채널에 상품을 등록합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 06 -->
+                    <div class="flex items-start md:flex-col md:items-center text-left md:text-center group">
+                        <div class="flex-shrink-0 z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-thankq to-thankq-dark text-white flex items-center justify-center font-black text-xl shadow-lg transition duration-300 group-hover:scale-105">
+                            06
+                        </div>
+                        <div class="ml-6 md:ml-0 md:mt-4">
+                            <h4 class="font-bold text-lg text-thankq-dark mb-1">운영수익 발생 → 소유권 이전</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                                운영 과정에서 수익쉐어를 정산하고 약정 누적금액 달성 시 글램핑 시설의 소유권을 캠핑장으로 이전합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Numbers Example (Calculator Table & Card) -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent font-bold uppercase tracking-wider text-xs md:text-sm">Cost Comparison</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    숫자로 명확하게 확인하는 <span class="text-accent">투자 예시</span>
+                </h2>
+                <p class="text-gray-600 text-sm">글램핑 1동을 새로 도입할 때, 비용이 어떻게 절감되는지 직접 확인해보세요.</p>
+            </div>
+
+            <!-- Comparison Box -->
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden">
+                <div class="bg-gray-900 text-white p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-amber-400 font-bold uppercase tracking-widest">EXAMPLE MODEL</span>
+                        <h3 class="text-xl md:text-2xl font-bold mt-1">글램핑 1동 구축비 예시: <span class="text-amber-400">5,000만원</span></h3>
+                    </div>
+                    <span class="bg-white/10 text-white border border-white/20 px-3 py-1.5 rounded-lg text-xs font-medium">기준가 예시</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                    
+                    <!-- Direct Installation (Left) -->
+                    <div class="p-8 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-lg font-bold text-gray-500">일반적인 직접 설치</h4>
+                            <span class="bg-gray-100 text-gray-600 px-2.5 py-1 rounded text-xs font-bold">100% 자부담</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl">
+                                <span class="text-gray-600 text-sm">초기 투자금</span>
+                                <span class="font-extrabold text-gray-900 text-lg">5,000 만원</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs text-gray-500 px-1">
+                                <span>예약/판매 수수료 별도</span>
+                                <span>시공 관리 직접 수행</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-50 text-red-700 text-xs p-4 rounded-xl flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-exclamation mt-0.5"></i>
+                            <span>고액의 현금이 한 번에 투자되어야 하므로 자금 압박과 투자 회수 기간에 대한 리스크가 높습니다.</span>
+                        </div>
+                    </div>
+
+                    <!-- Yala Collaboration (Right) -->
+                    <div class="p-8 space-y-6 bg-gradient-to-b from-amber-50/20 to-transparent">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-lg font-bold text-yala">얄라글램핑 협업 모델</h4>
+                            <span class="bg-yala text-white px-2.5 py-1 rounded text-xs font-bold">부담 최소화</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                <span class="text-gray-800 text-sm font-bold">캠핑장 초기 부담 (30%)</span>
+                                <span class="font-black text-accent text-xl">1,500 만원</span>
+                            </div>
+                            
+                            <div class="flex justify-between items-center bg-yala-light border border-yala/10 p-4 rounded-xl">
+                                <span class="text-gray-800 text-sm">얄라글램핑 선투자 (70%)</span>
+                                <span class="font-extrabold text-yala text-lg">3,500 만원</span>
+                            </div>
+                        </div>
+
+                        <!-- Progress mini-step -->
+                        <div class="py-2 flex flex-col items-center space-y-2 text-xs text-gray-500 font-bold">
+                            <div class="flex items-center space-x-1"><i class="fa-solid fa-circle-play text-yala"></i> <span>글램핑 운영 시작</span></div>
+                            <i class="fa-solid fa-chevron-down text-amber-500"></i>
+                            <div class="flex items-center space-x-1"><i class="fa-solid fa-chart-line text-yala"></i> <span>예약매출 발생</span></div>
+                            <i class="fa-solid fa-chevron-down text-amber-500"></i>
+                            <div class="flex items-center space-x-1"><i class="fa-solid fa-percent text-yala"></i> <span>운영수익에서 수익쉐어 정산</span></div>
+                            <i class="fa-solid fa-chevron-down text-amber-500"></i>
+                            <div class="bg-emerald-500 text-white px-4 py-1.5 rounded-full text-xs font-black shadow-sm">
+                                <i class="fa-solid fa-gift mr-1"></i> 글램핑 소유권 캠핑장 이전
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Notice Footer -->
+                <div class="bg-gray-100 px-6 py-4 border-t border-gray-200 text-center">
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        ※ 위 금액 및 비율은 사업구조 설명을 위한 예시이며 실제 조건은 캠핑장별 사업성 및 계약조건에 따라 달라질 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Cash Flow (Money Flow Chart) -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-thankq font-bold uppercase tracking-wider text-xs md:text-sm">Cash Flow</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    매달 송금할 필요 없는 <span class="text-thankq">투명한 정산 흐름</span>
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base">
+                    직접 정산하고 계좌이체 하실 필요가 없습니다. 예약 플랫폼 땡큐캠핑을 통해 투명하고 확실하게 정산 배분됩니다.
+                </p>
+            </div>
+
+            <!-- Flow Visual Box -->
+            <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 shadow-sm max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-5 items-center gap-6 text-center">
+                    
+                    <!-- Customer -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 md:col-span-1">
+                        <div class="w-10 h-10 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-user-tag text-lg"></i>
+                        </div>
+                        <h4 class="font-extrabold text-sm text-gray-900">고객</h4>
+                        <p class="text-xs text-gray-500 mt-1">글램핑 예약 및 결제</p>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-thankq flex flex-col justify-center items-center">
+                        <i class="fa-solid fa-chevron-down md:hidden text-lg"></i>
+                        <i class="fa-solid fa-chevron-right hidden md:block text-xl"></i>
+                        <span class="text-[10px] text-gray-400 mt-1 font-bold">카드 결제</span>
+                    </div>
+
+                    <!-- ThankQ Platform -->
+                    <div class="bg-emerald-50 p-6 rounded-2xl shadow-sm border-2 border-thankq md:col-span-1 relative">
+                        <div class="w-10 h-10 bg-thankq text-white rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-server text-lg"></i>
+                        </div>
+                        <h4 class="font-extrabold text-sm text-thankq-dark">땡큐캠핑</h4>
+                        <p class="text-[11px] text-thankq font-bold mt-1">매출 집계</p>
+                        <div class="bg-amber-400 text-yala text-[9px] font-black px-1.5 py-0.5 rounded-full absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap shadow">
+                            자동 분배 시스템
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-thankq flex flex-col justify-center items-center">
+                        <i class="fa-solid fa-chevron-down md:hidden text-lg"></i>
+                        <i class="fa-solid fa-chevron-right hidden md:block text-xl"></i>
+                        <span class="text-[10px] text-gray-400 mt-1 font-bold">자동 분배</span>
+                    </div>
+
+                    <!-- Split (Yala & Campsite) -->
+                    <div class="space-y-4 md:col-span-1">
+                        <!-- Yala -->
+                        <div class="bg-white p-4 rounded-xl border border-gray-200 text-left shadow-sm">
+                            <div class="flex items-center space-x-2 text-yala font-bold mb-1">
+                                <i class="fa-solid fa-building-columns text-xs"></i>
+                                <span class="text-xs">얄라글램핑</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500">약정 수익쉐어<br>정산</p>
+                        </div>
+                        <!-- Campsite -->
+                        <div class="bg-gradient-to-r from-amber-50 to-white p-4 rounded-xl border border-amber-200 text-left shadow-sm">
+                            <div class="flex items-center space-x-2 text-accent font-bold mb-1">
+                                <i class="fa-solid fa-tents text-xs"></i>
+                                <span class="text-xs">캠핑장 (사장님)</span>
+                            </div>
+                            <p class="text-[11px] text-gray-700 font-semibold">운영수익 정산</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Money Flow Focus Message -->
+                <div class="mt-8 bg-amber-50 border border-amber-200 p-4 rounded-2xl text-center">
+                    <p class="text-xs md:text-sm text-gray-700 leading-relaxed">
+                        <i class="fa-solid fa-circle-check text-accent mr-1"></i>
+                        매월 사장님이 별도로 얄라글램핑에 비용을 송금하는 방식보다 <strong>실제 예약매출을 기반으로 투명하게 정산되는 구조</strong>이므로 안심하고 도입할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Risk Management &expected benefits -->
+    <section class="py-20 bg-gray-100 border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Left: Risk Mitigation -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-yala font-bold uppercase tracking-wider text-xs">Risk Defense</span>
+                        <h3 class="text-2xl font-extrabold text-gray-900 mt-1">투자 및 운영 리스크 보완</h3>
+                        <p class="text-gray-500 text-sm mt-2">캠핑장 사장님이 안심하고 도입하실 수 있도록 촘촘하게 지원합니다.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Risk item 1 -->
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-yala-light text-yala flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base">보증보험 활용 검토</h4>
+                                <p class="text-gray-600 text-xs md:text-sm mt-1 leading-relaxed">
+                                    계약불이행이나 운영중단 등 특정 위험을 보완하기 위해 보증보험을 활용할 수 있는 구조를 검토합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Risk item 2 -->
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-yala-light text-yala flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base">투명한 매출·정산</h4>
+                                <p class="text-gray-600 text-xs md:text-sm mt-1 leading-relaxed">
+                                    땡큐캠핑 플랫폼을 통해 실시간으로 예약매출과 수익쉐어 내역을 언제든 투명하게 확인할 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Risk item 3 -->
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-yala-light text-yala flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base">소유권 이전 조건 명확화</h4>
+                                <p class="text-gray-600 text-xs md:text-sm mt-1 leading-relaxed">
+                                    약정 누적금액, 계약기간, 소유권 이전 조건을 계약 단계에서부터 꼼꼼하고 명확하게 규정합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Risk item 4 -->
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-yala-light text-yala flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base">체계적인 3자 역할 분담</h4>
+                                <p class="text-gray-600 text-xs md:text-sm mt-1 leading-relaxed">
+                                    시설 공급은 얄라글램핑, 현장 운영은 캠핑장, 예약·판매·정산은 땡큐캠핑이 정밀하게 분담합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Expected Benefits (5 items) -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-thankq font-bold uppercase tracking-wider text-xs">Campsite Expected Benefits</span>
+                        <h3 class="text-2xl font-extrabold text-gray-900 mt-1">캠핑장 예상 효과</h3>
+                        <p class="text-gray-500 text-sm mt-2">글램핑을 통해 한 차원 높은 비즈니스로 도약할 수 있습니다.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-thankq-light text-thankq flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-percent"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">초기 투자비용 절감</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                대규모 시설투자 부담을 감소시켜 보다 여유로운 경영이 가능합니다.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-thankq-light text-thankq flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">객단가 상승</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                일반 캠핑사이트 외 고부가가치 럭셔리 상품을 확보하여 객단가를 크게 높입니다.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-thankq-light text-thankq flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">신규 고객 유입</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                트렌디하고 장비 없는 글램핑 선호 고객층을 폭넓게 흡수할 수 있습니다.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-thankq-light text-thankq flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-angles-up"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">예약판매 확대</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                땡큐캠핑의 막강한 예약 판매 채널을 100% 연동하여 판로를 극대화합니다.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm col-span-1 sm:col-span-2">
+                            <div class="w-8 h-8 rounded-lg bg-thankq-light text-thankq flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-sm mb-1">시설 자산 확보</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                단순 임대가 아닌 약정조건 충족 후 글램핑 시설을 사장님의 자산으로 영구 소유합니다.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Interactive Revenue Simulator -->
+    <section id="simulator-section" class="py-20 bg-white" x-data="simulator">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-thankq font-bold uppercase tracking-wider text-xs md:text-sm">Revenue Calculator</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    우리 캠핑장 예상수익 확인
+                </h2>
+                <p class="text-gray-600 text-sm">기본 조건을 선택하여 예상 매출을 한눈에 알아보세요.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-thankq-light via-gray-50 to-white rounded-3xl p-6 md:p-10 border border-emerald-100 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Simulator Inputs (L: 7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <h3 class="font-extrabold text-gray-900 text-lg flex items-center">
+                        <span class="w-2.5 h-2.5 rounded-full bg-thankq mr-2"></span> 시뮬레이터 입력항목
+                    </h3>
+
+                    <!-- Model Select -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold text-gray-700">도입 희망 모델</label>
+                        <select x-model="model" @change="changeModel()" class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq">
+                            <option value="SPARKLE">SPARKLE (스타일리시 커플형, 10~15만)</option>
+                            <option value="COMET">COMET (콤팩트 주방/화장실형, 15~22만)</option>
+                            <option value="SUNSHINE">SUNSHINE (최고급 럭셔리 패밀리형, 25~38만)</option>
+                        </select>
+                    </div>
+
+                    <!-- Region Select -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold text-gray-700">캠핑장 지역</label>
+                        <select x-model="region" class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq">
+                            <option value="경기/가평">경기/가평권</option>
+                            <option value="경기/포천">경기/북부권 (포천 등)</option>
+                            <option value="강원권">강원권</option>
+                            <option value="충청권">충청권</option>
+                            <option value="경상권">경상권</option>
+                            <option value="전라권">전라권</option>
+                            <option value="제주권">제주권</option>
+                        </select>
+                    </div>
+
+                    <!-- Tents (tents) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">설치 희망 글램핑 동수</label>
+                            <span class="text-sm font-extrabold text-thankq"><span x-text="tents"></span>동</span>
+                        </div>
+                        <input type="range" min="1" max="20" step="1" x-model="tents" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-thankq">
+                        <div class="flex justify-between text-[10px] text-gray-400 font-medium">
+                            <span>1동</span>
+                            <span>10동</span>
+                            <span>20동</span>
+                        </div>
+                    </div>
+
+                    <!-- Price per night (price) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">예상 1박 판매가격</label>
+                            <span class="text-sm font-extrabold text-thankq"><span x-text="price.toLocaleString()"></span>원</span>
+                        </div>
+                        <input type="range" min="50000" max="500000" step="10000" x-model="price" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-thankq">
+                        <div class="flex justify-between text-[10px] text-gray-400 font-medium">
+                            <span>5만원</span>
+                            <span>25만원</span>
+                            <span>50만원</span>
+                        </div>
+                    </div>
+
+                    <!-- Expected occupancy (occupancy) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">예상 월 평균 가동률</label>
+                            <span class="text-sm font-extrabold text-thankq"><span x-text="occupancy"></span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" step="5" x-model="occupancy" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-thankq">
+                        <div class="flex justify-between text-[10px] text-gray-400 font-medium">
+                            <span>10% (주말 위주)</span>
+                            <span>40% (평균)</span>
+                            <span>80% (성수기)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator Outputs (R: 5 cols) -->
+                <div class="lg:col-span-5 bg-yala text-white rounded-2xl p-6 flex flex-col justify-between shadow-inner">
+                    <div class="space-y-6">
+                        <h4 class="text-sm font-bold tracking-wider text-yala-blue uppercase flex items-center">
+                            <i class="fa-solid fa-chart-line mr-2"></i> 실시간 모의계산 결과
+                        </h4>
+                        
+                        <div class="space-y-4">
+                            <!-- Nights sold -->
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="text-xs text-gray-300">월 예상 판매박수</span>
+                                <span class="font-extrabold text-lg"><span x-text="monthlyNights"></span>박</span>
+                            </div>
+
+                            <!-- Monthly Revenue -->
+                            <div class="flex flex-col border-b border-white/10 pb-3">
+                                <span class="text-xs text-gray-300">월 예상 매출</span>
+                                <div class="text-right mt-1">
+                                    <span class="font-black text-2xl text-amber-400">약 <span x-text="formatWon(monthlyRevenue)"></span></span>
+                                </div>
+                            </div>
+
+                            <!-- Annual Revenue -->
+                            <div class="flex flex-col">
+                                <span class="text-xs text-gray-300">연간 예상 매출</span>
+                                <div class="text-right mt-1">
+                                    <span class="font-black text-3xl text-emerald-400">약 <span x-text="formatWon(yearlyRevenue)"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 space-y-4">
+                        <button type="button" @click="applySimulation()" class="w-full bg-accent hover:bg-accent-dark text-white font-black py-4 rounded-xl text-center shadow-lg transition transform hover:-translate-y-0.5">
+                            우리 캠핑장 수익 분석 신청 <i class="fa-solid fa-arrow-right ml-1 text-sm"></i>
+                        </button>
+                        
+                        <p class="text-[10px] text-gray-400 leading-normal">
+                            “실제 예상매출 및 투자회수기간은 땡큐캠핑의 해당 지역 예약데이터와 캠핑장 운영현황을 분석하여 별도로 안내드립니다.”
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Final Consultation Form -->
+    <section id="contact-section" class="py-20 bg-gray-50 border-t border-gray-200" x-data="contactForm">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent font-bold uppercase tracking-wider text-xs">Consultation</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    우리 캠핑장에도 글램핑을 도입해보세요
+                </h2>
+                <div class="text-gray-600 text-sm md:text-base leading-relaxed space-y-1 font-medium">
+                    <p>대규모 초기 투자 대신</p>
+                    <p class="text-gray-900 font-extrabold">적은 초기비용으로 시작하고, 운영수익을 만들면서, 최종적으로 시설을 확보하는 방식입니다.</p>
+                    <p class="text-gray-500 font-light text-xs pt-2">얄라글램핑 코리아와 땡큐캠핑이 캠핑장의 입지와 기존 예약 데이터를 분석하여 적합한 도입방안을 제안합니다.</p>
+                </div>
+            </div>
+
+            <!-- Consultation Form Card -->
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-xl p-6 md:p-10">
+                <form @submit.prevent="submitForm()" class="space-y-6">
+                    
+                    <!-- Grid fields -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Camp Name -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">캠핑장명 <span class="text-red-500">*</span></label>
+                            <input type="text" x-model="campName" required placeholder="예: 가평 초록숲 캠핑장" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition">
+                        </div>
+
+                        <!-- Manager Name -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">담당자명 <span class="text-red-500">*</span></label>
+                            <input type="text" x-model="managerName" required placeholder="예: 홍길동 대표" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition">
+                        </div>
+
+                        <!-- Contact Phone -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">연락처 <span class="text-red-500">*</span></label>
+                            <input type="tel" x-model="phone" required placeholder="예: 010-1234-5678" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition">
+                        </div>
+
+                        <!-- Region -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">지역</label>
+                            <input type="text" x-model="region" placeholder="예: 경기 가평군" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition">
+                        </div>
+
+                        <!-- Model Selection in Form -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">희망 도입 모델</label>
+                            <select x-model="selectedModel" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition">
+                                <option value="">선택해주세요</option>
+                                <option value="SPARKLE">SPARKLE (커플 특화)</option>
+                                <option value="COMET">COMET (콤팩트 실용)</option>
+                                <option value="SUNSHINE">SUNSHINE (최고급 패밀리)</option>
+                            </select>
+                        </div>
+
+                        <!-- Tents -->
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">희망 설치 동수</label>
+                            <input type="text" x-model="tents" placeholder="예: 5동" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition">
+                        </div>
+
+                        <!-- Message -->
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">상담내용</label>
+                            <textarea rows="4" x-model="message" placeholder="부지 현황 또는 도입 조건 관련하여 상담받고 싶으신 내용을 편하게 입력해주세요." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-thankq focus:bg-white transition"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white font-black py-4 rounded-xl text-center text-lg shadow-xl shadow-accent/20 transition transform hover:-translate-y-0.5">
+                            글램핑 도입 상담 신청
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Success Modal -->
+            <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/60" x-show="showSuccessModal" x-transition x-cloak>
+                <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center space-y-6" @click.away="closeModal()">
+                    <div class="w-16 h-16 bg-thankq-light text-thankq rounded-full flex items-center justify-center mx-auto text-3xl">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h4 class="text-2xl font-black text-gray-900">도입 상담 신청 완료!</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            제출해주신 캠핑장 도입 조건이 성공적으로 접수되었습니다. 담당 파트너십 매니저가 땡큐캠핑 가용 데이터를 정리하여 조속히 연락드리겠습니다.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-2xl text-left text-xs space-y-1.5 text-gray-600">
+                        <div><strong>신청 캠핑장:</strong> <span x-text="campName"></span></div>
+                        <div><strong>담당자:</strong> <span x-text="managerName"></span></div>
+                        <div><strong>연락처:</strong> <span x-text="phone"></span></div>
+                    </div>
+
+                    <button @click="closeModal()" class="w-full bg-thankq hover:bg-thankq-dark text-white font-bold py-3 rounded-xl transition shadow">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Fixed Sticky Mobile CTA (Sticky Bar) -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 py-3 md:hidden shadow-lg flex items-center justify-between">
+        <div class="flex flex-col text-left">
+            <span class="text-[9px] text-gray-400 font-bold">얄라글램핑 × 땡큐캠핑</span>
+            <span class="text-xs font-black text-yala-dark">초기 구축비 30%로 도입</span>
+        </div>
+        <a href="#contact-section" class="bg-accent hover:bg-accent-dark text-white px-6 py-2.5 rounded-xl font-extrabold text-sm shadow-md transition">
+            글램핑 도입 상담하기
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 pb-24 md:pb-12 border-t border-gray-800">
+        <div class="container mx-auto px-4 max-w-5xl text-center md:text-left space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-8 gap-4">
+                <span class="text-lg font-black text-white">얄라글램핑 × 땡큐캠핑 파트너십</span>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="hover:text-white transition">개인정보처리방침</a>
+                    <a href="#" class="hover:text-white transition">서비스 이용약관</a>
+                    <a href="#" class="hover:text-white transition">제휴 안내</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed">
+                <div>
+                    <h5 class="text-white font-bold mb-2">얄라글램핑 코리아 주식회사</h5>
+                    <p>대표자: 김얄라 | 사업자등록번호: 000-00-00000</p>
+                    <p>소재지: 서울특별시 강남구 테헤란로 얄라타워 10층</p>
+                    <p>제휴문의: support@yalaglamping.co.kr</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-2">주식회사 땡큐캠핑</h5>
+                    <p>대표자: 이캠핑 | 사업자등록번호: 000-00-00000</p>
+                    <p>소재지: 서울특별시 서초구 서초대로 땡큐빌딩 5층</p>
+                    <p>고객센터: 1544-0000 (평일 09:00 - 18:00)</p>
+                </div>
+            </div>
+
+            <div class="text-center text-[11px] text-gray-600 pt-4">
+                <p>© 2026 Yala Glamping & ThankQ Camping. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js logic registration -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('simulator', () => ({
+                model: 'COMET',
+                region: '경기/가평',
+                tents: 5,
+                price: 180000,
+                occupancy: 40,
+                init() {
+                    window.addEventListener('select-model', (e) => {
+                        this.model = e.detail;
+                        this.changeModel();
+                        // Scroll to simulator
+                        document.getElementById('simulator-section').scrollIntoView({ behavior: 'smooth' });
+                    });
+                },
+                changeModel() {
+                    if (this.model === 'SPARKLE') {
+                        this.price = 120000;
+                    } else if (this.model === 'COMET') {
+                        this.price = 180000;
+                    } else if (this.model === 'SUNSHINE') {
+                        this.price = 280000;
+                    }
+                },
+                get monthlyNights() {
+                    return Math.round(this.tents * 30 * (this.occupancy / 100));
+                },
+                get monthlyRevenue() {
+                    return this.monthlyNights * this.price;
+                },
+                get yearlyRevenue() {
+                    return this.monthlyRevenue * 12;
+                },
+                formatWon(value) {
+                    if (value >= 100000000) {
+                        const eok = Math.floor(value / 100000000);
+                        const man = Math.round((value % 100000000) / 10000);
+                        return man > 0 ? `${eok}억 ${man.toLocaleString()}만원` : `${eok}억원`;
+                    }
+                    return `${Math.round(value / 10000).toLocaleString()}만원`;
+                },
+                applySimulation() {
+                    // Send calculated values to the final form
+                    window.dispatchEvent(new CustomEvent('fill-form', {
+                        detail: {
+                            model: this.model,
+                            tents: this.tents + '동',
+                            region: this.region,
+                            details: `[수익 계산기 시뮬레이션 적용]\n- 도입 모델: ${this.model}\n- 지역: ${this.region}\n- 희망 설치 동수: ${this.tents}동\n- 예상 객단가: ${Number(this.price).toLocaleString()}원\n- 가동률: ${this.occupancy}%\n- 예상 월 매출: 약 ${this.formatWon(this.monthlyRevenue)} (연간 약 ${this.formatWon(this.yearlyRevenue)})`
+                        }
+                    }));
+                    // Smooth scroll to the form
+                    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+                }
+            }));
+
+            Alpine.data('contactForm', () => ({
+                campName: '',
+                managerName: '',
+                phone: '',
+                region: '',
+                selectedModel: '',
+                tents: '',
+                message: '',
+                isSubmitted: false,
+                showSuccessModal: false,
+                init() {
+                    window.addEventListener('fill-form', (e) => {
+                        this.region = e.detail.region;
+                        this.tents = e.detail.tents;
+                        this.selectedModel = e.detail.model;
+                        this.message = e.detail.details;
+                    });
+                },
+                submitForm() {
+                    if (!this.campName || !this.managerName || !this.phone) {
+                        alert('캠핑장명, 담당자명, 연락처는 필수 입력 항목입니다.');
+                        return;
+                    }
+                    this.showSuccessModal = true;
+                },
+                closeModal() {
+                    this.showSuccessModal = false;
+                    // Reset fields
+                    this.campName = '';
+                    this.managerName = '';
+                    this.phone = '';
+                    this.region = '';
+                    this.selectedModel = '';
+                    this.tents = '';
+                    this.message = '';
+                }
+            }));
+        });
+    </script>
+</body>
+</html>
